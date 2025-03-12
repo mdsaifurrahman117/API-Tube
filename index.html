@@ -4,97 +4,31 @@
 <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-                        rel="stylesheet">
+            <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
             <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
             <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-            <style>
-                        .font-inter {
-                                    font-family: 'Inter', sans-serif;
-                        }
-
-                        .bg-primary {
-                                    background-color: #FF1F3D;
-                        }
-            </style>
-            <title>PH Tube</title>
+            <link rel="stylesheet" href="style.css">
+            <title>API Tube</title>
 </head>
 
-<body>
+<body class="font-inter">
             <header class="flex items-center flex-col gap-5">
                         <nav class="navbar bg-base-100 shadow px-5">
                                     <div class="navbar-start">
-                                                <a href="index.html" class="w-[100px]">
-                                                            <img src="assets/Logo.png" alt="Logo">
-                                                </a>
+                                                <a href="index.html" class="text-2xl font-bold">API Tube</a>
                                     </div>
                                     <div class="navbar-center hidden lg:flex">
-                                                <button class="btn bg-ghost font-inter">Sort by view</button>
+                                                <button class="btn bg-ghost">Sort by view</button>
                                     </div>
                                     <div class="navbar-end">
-                                                <a class="btn bg-primary text-white font-inter">Blog</a>
+                                                <a class="btn bg-primary text-white">Blog</a>
                                     </div>
                         </nav>
                         <div class="join gap-5" id="category-container">
                                     <button class="btn join-item bg-primary text-white">All</button>
                         </div>
             </header>
-            <main class="conatiner mx-auto my-10 flex flex-col md:flex-row gap-5 justify-center items-center">
-                        <div>
-                                    <div class="card bg-base-100 w-80 shadow-sm">
-                                                <figure>
-                                                            <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                                                                        alt="Shoes" />
-                                                </figure>
-                                                <div class="card-body">
-                                                            <h2 class="card-title">Card Title</h2>
-                                                            <p>A card component has a figure, a body part, and inside
-                                                                        body there are title and actions parts</p>
-                                                            <div class="card-actions justify-end">
-                                                                        <button class="btn btn-primary">Buy Now</button>
-                                                            </div>
-                                                </div>
-                                    </div>
-                        </div>
-                        <div>
-                                    <div class="card bg-base-100 w-80 shadow-sm">
-                                                <figure>
-                                                            <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                                                                        alt="Shoes" />
-                                                </figure>
-                                                <div class="card-body">
-                                                            <h2 class="card-title">Card Title</h2>
-                                                            <p>A card component has a figure, a body part, and inside
-                                                                        body there are title and actions parts</p>
-                                                            <div class="card-actions justify-end">
-                                                                        <button class="btn btn-primary">Buy Now</button>
-                                                            </div>
-                                                </div>
-                                    </div>
-                        </div>
-                        <div>
-                                    <div class="card bg-base-100 w-80 shadow-sm">
-                                                <figure>
-                                                            <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                                                                        alt="Shoes" />
-                                                </figure>
-                                                <div class="card-body">
-                                                            <h2 class="card-title">Card Title</h2>
-                                                            <p>A card component has a figure, a body part, and inside
-                                                                        body there are title and actions parts</p>
-                                                            <div class="card-actions justify-end">
-                                                                        <button class="btn btn-primary">Buy Now</button>
-                                                            </div>
-                                                </div>
-                                    </div>
-                        </div>
-                        
-            </main>
-            <script src="/script/script.js"></script>
-            <script src="/script/categories.js"></script>
-            <script src="/script/video.js"></script>
+            <script src="script.js"></script>
 </body>
 
 </html>
