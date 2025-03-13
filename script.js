@@ -41,6 +41,35 @@ const videos = () => {
                         .catch(error => console.log(error))
 }
 
+// posted time calculation 
+const get_time = (time) => {
+            const hours = parseInt(time / 3600);
+            const remainingHours = time % 3600;
+            const minutes = parseInt(remainingHours / 60);
+            return `${hours} h ${minutes} m ago`;
+}
+
+// get the video description
+const get_description = (description) => {
+            fetch(`https://openapi.programming-hero.com/api/phero-tube/video/${description}`)
+                        .then(response => response.json())
+                        .then(data => show_description(data.video))
+
+            // console.log(description);
+}
+
+// show the description in the modal
+const show_description = (video) => {
+            console.log(video);
+            const description_container = document.getElementById("description-container");
+            description_container.innerHTML = `
+                        <img src="${video.thumbnail}" alt="thumbnail" class="w-full h-64 object-cover rounded" />
+                        <h3 class="text-lg font-bold mt-2">${video.title}</h3>
+                        <p class="py-2">${video.description}</p>
+            `;
+            document.getElementById("open_modal").showModal();
+}
+
 // Showing all the videos by default
 const show_videos = (items) => {
             // console.log(items.videos);
@@ -48,12 +77,12 @@ const show_videos = (items) => {
             // Get the video container
             const video_container = document.getElementById("video_container");
             video_container.innerHTML = "";
-            
+
             if (items.length == 0) {
                         video_container.classList.remove("grid")
                         video_container.innerHTML = `
                                     <div class="min-h-[400px] w-[300px] mx-auto flex flex-col gap-5 items-center justify-center text-center">
-                                                <img src="assets/icon.png" alt="not-found" class="w-32 h-32 mx-auto">
+                                                <img src="assets/not-found.png" alt="not-found" class="w-32 h-32 mx-auto">
                                                 <h2 class="text-3xl font-bold">Oops! sorry, There are no content here</h2>
                                     </div>
                                     </div>
@@ -75,7 +104,8 @@ const show_videos = (items) => {
                         <div class="card bg-base-100 w-80 md:w-[310px] mx-auto">
                                     <figure class="w-full h-52">
                                                 <img src="${video.thumbnail}" alt="thumbnail" 
-                                                            class="w-full h-full object-cover rounded-br-lg rounded-bl-lg" 
+                                                            class="w-full h-full object-cover rounded-br-lg rounded-bl-lg cursor-pointer" 
+                                                            onclick="get_description('${video.video_id}')"
                                                 />
                                     </figure>
                                     <div class="px-0 py-2 flex flex-row gap-2 mt-3">
@@ -94,18 +124,11 @@ const show_videos = (items) => {
                                                             </span>
                                                 </div>
                                     </div>
-                        </div> ` ;
+                        </div> 
+                        ` ;
                         video_container.appendChild(video_card);
             })
             // console.log(items.videos);
-}
-
-// posted time calculation 
-const get_time = (time) => {
-            const hours = parseInt(time / 3600);
-            const remainingHours = time % 3600;
-            const minutes = parseInt(remainingHours / 60);
-            return `${hours} h ${minutes} m ago`;
 }
 
 const all_btn = document.getElementById("all-btn");
@@ -143,3 +166,29 @@ const get_videos = (id) => {
 }
 
 videos()
+
+
+
+
+/*
+
+{
+    "category_id": "1001",
+    "video_id": "aaab",
+    "thumbnail": "https://i.ibb.co/QPNzYVy/moonlight.jpg",
+    "title": "Midnight Serenade",
+    "authors": [
+        {
+            "profile_picture": "https://i.ibb.co/fDbPv7h/Noha.jpg",
+            "profile_name": "Noah Walker",
+            "verified": false
+        }
+    ],
+    "others": {
+        "views": "543K",
+        "posted_date": ""
+    },
+    "description": "'Midnight Serenade' by Noah Walker is a soulful journey into the depths of the night, capturing the mystique and allure of a moonlit evening. With 543K views, this song brings together tender melodies and evocative lyrics, making it a favorite among listeners seeking a contemplative yet uplifting experience. Immerse yourself in this musical masterpiece and feel the calm embrace of the night."
+}
+
+*/
