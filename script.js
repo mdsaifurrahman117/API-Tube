@@ -6,29 +6,33 @@ const categories = () => {
                         .catch(error => console.log(error));
 }
 
-// Show the categories
+// Show the categories button
 const show_categories = (categories) => {
             // Get the category container
             const category_container = document.getElementById("category-container");
 
             // Loop through the categories
             categories.forEach(item => {
-                        // console.log(item.category);
+                        // console.log(item.category_id);
 
                         // Create a new button element
-                        const category_item = document.createElement("button");
-                        category_item.classList = "btn join-item";
-                        category_item.innerText = item.category;
+                        const button_container = document.createElement("div");
+                        button_container.innerHTML = document.createElement("button");
+                        button_container.innerHTML = `
+                                    <button class="btn join-item" onclick="get_videos(${item.category_id})">
+                                                ${item.category}
+                                    </button>
+                        `;
 
                         // Append the category to the container
-                        category_container.appendChild(category_item);
+                        category_container.appendChild(button_container);
             })
             // console.log(categories);
 }
 
 categories();
 
-// Get all the videos
+// Get all the videos by default
 const videos = () => {
             fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
                         .then(response => response.json())
@@ -36,20 +40,13 @@ const videos = () => {
                         .catch(error => console.log(error))
 }
 
-// posted time calculation 
-const get_time = (time) => {
-            const hours = parseInt(time / 3600);
-            const remainingHours = time % 3600;
-            const minutes = parseInt(remainingHours / 60);
-            return `${hours} h ${minutes} m ago`;
-}
-
-// Show the videos
+// Showing all the videos by default
 const show_videos = (items) => {
             // console.log(items.videos);
 
             // Get the video container
             const video_container = document.getElementById("video_container");
+            video_container.innerHTML = "";
 
             // Loop through the 
             items.forEach(video => {
@@ -86,6 +83,29 @@ const show_videos = (items) => {
                         video_container.appendChild(video_card);
             })
             // console.log(items.videos);
+}
+
+// posted time calculation 
+const get_time = (time) => {
+            const hours = parseInt(time / 3600);
+            const remainingHours = time % 3600;
+            const minutes = parseInt(remainingHours / 60);
+            return `${hours} h ${minutes} m ago`;
+}
+
+// get all videos by clicking the all button
+const get_videos_all = () => {
+            video_container.innerHTML = "";
+            videos();
+}
+
+// get videos by category
+const get_videos = (id) => {
+            // alert(id);
+            fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
+                        .then(response => response.json())
+                        .then(data => show_videos(data.category))
+                        .catch(error => console.log(error));
 }
 
 videos()
