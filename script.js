@@ -19,7 +19,8 @@ const show_categories = (categories) => {
                         const button_container = document.createElement("div");
                         button_container.innerHTML = document.createElement("button");
                         button_container.innerHTML = `
-                                    <button class="btn join-item" onclick="get_videos(${item.category_id})">
+                                    <button id="category-btn-${item.category_id}" 
+                                                class="btn join-item category-btn" onclick="get_videos(${item.category_id})">
                                                 ${item.category}
                                     </button>
                         `;
@@ -47,6 +48,20 @@ const show_videos = (items) => {
             // Get the video container
             const video_container = document.getElementById("video_container");
             video_container.innerHTML = "";
+            
+            if (items.length == 0) {
+                        video_container.classList.remove("grid")
+                        video_container.innerHTML = `
+                                    <div class="min-h-[400px] w-[300px] mx-auto flex flex-col gap-5 items-center justify-center text-center">
+                                                <img src="assets/icon.png" alt="not-found" class="w-32 h-32 mx-auto">
+                                                <h2 class="text-3xl font-bold">Oops! sorry, There are no content here</h2>
+                                    </div>
+                                    </div>
+                        `;
+                        return;
+            } else {
+                        video_container.classList.add("grid")
+            }
 
             // Loop through the 
             items.forEach(video => {
@@ -93,10 +108,23 @@ const get_time = (time) => {
             return `${hours} h ${minutes} m ago`;
 }
 
+const all_btn = document.getElementById("all-btn");
+
 // get all videos by clicking the all button
 const get_videos_all = () => {
             video_container.innerHTML = "";
             videos();
+            remove_active();
+            all_btn.classList.add("bg-primary");
+}
+
+// remove active class from all category buttons
+const remove_active = () => {
+            const category_btn = document.getElementsByClassName("category-btn");
+            all_btn.classList.remove("bg-primary");
+            for (const btn of category_btn) {
+                        btn.classList.remove("bg-primary");
+            }
 }
 
 // get videos by category
@@ -104,7 +132,13 @@ const get_videos = (id) => {
             // alert(id);
             fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
                         .then(response => response.json())
-                        .then(data => show_videos(data.category))
+                        .then(data => {
+                                    remove_active();
+                                    const active_category_btn = document.getElementById(`category-btn-${id}`);
+                                    active_category_btn.classList.add("bg-primary");
+
+                                    show_videos(data.category)
+                        })
                         .catch(error => console.log(error));
 }
 
