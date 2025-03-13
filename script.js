@@ -36,6 +36,14 @@ const videos = () => {
                         .catch(error => console.log(error))
 }
 
+// posted time calculation 
+const get_time = (time) => {
+            const hours = parseInt(time / 3600);
+            const remainingHours = time % 3600;
+            const minutes = parseInt(remainingHours / 60);
+            return `${hours} h ${minutes} m ago`;
+}
+
 // Show the videos
 const show_videos = (items) => {
             // console.log(items.videos);
@@ -60,18 +68,22 @@ const show_videos = (items) => {
                                     </figure>
                                     <div class="px-0 py-2 flex flex-row gap-2 mt-3">
                                                 <img src="${video.authors[0].profile_picture}" alt="profile" class="w-8 h-8 rounded-full" />
-                                                <div>
+                                                <div class="text-sm">
                                                             <h2 class="card-title">${video.title}</h2>
                                                             <h4 class="text-sm">${video.authors[0].profile_name}
-                                                                        <span>${video.authors[0].verified == true ? 
-                                                                                    `<i class="ri-verified-badge-fill text-blue-400 text-lg ml-1"></i>` : ""}
+                                                                        <span>${video.authors[0].verified == true ?
+                                                `<i class="ri-verified-badge-fill text-blue-400 text-sm ml-1"></i>` : ""}
                                                                         </span>
                                                             </h4>
                                                             <span class="text-sm">${video.others.views}</span>
+                                                            <span>●</span>
+                                                            <span class="text-sm">${video.others.posted_date?.length == 0
+                                                ? "Now" : get_time(video.others.posted_date)}
+                                                            </span>
                                                 </div>
                                     </div>
                         </div> ` ;
-                        video_container.appendChild(video_card);                    
+                        video_container.appendChild(video_card);
             })
             // console.log(items.videos);
 }
