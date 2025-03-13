@@ -13,16 +13,53 @@
 </head>
 
 <body class="font-inter">
-            <header class="flex items-center flex-col gap-5">
+            <header class="flex items-center flex-col gap-5 sticky top-0 z-[999] bg-base-100 pb-3">
                         <nav class="navbar bg-base-100 shadow px-5">
                                     <div class="navbar-start">
-                                                <a href="index.html" class="text-2xl font-bold">API Tube</a>
+                                                <div class="flex flex-col md:flex-row items-center gap-1">
+                                                            <img src="https://cdn-icons-png.flaticon.com/128/2504/2504965.png" alt="logo" class="w-[25px] h-[25px]">
+                                                            <a href="index.html" class="text-[12px] md:text-2xl font-bold"> API Tube</a>
+                                                </div>
                                     </div>
-                                    <div class="navbar-center hidden lg:flex">
-                                                <button class="btn bg-ghost">Sort by view</button>
+                                    <div class="navbar-center">
+                                                <label class="w-40 md:w-64 input-bordered flex items-center gap-2 border border-gray-300 px-4 py-2 rounded-full">
+                                                            <input type="search" required placeholder="Search" id="search-input"
+                                                                        class="border-none focus:outline-none w-full" />
+                                                            <svg class="h-[1em] opacity-50 cursor-pointer"
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 24 24">
+                                                                        <g stroke-linejoin="round"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-width="2.5" fill="none"
+                                                                                    stroke="currentColor">
+                                                                                    <circle cx="11" cy="11" r="8">
+                                                                                    </circle>
+                                                                                    <path d="m21 21-4.3-4.3"></path>
+                                                                        </g>
+                                                            </svg>
+                                                </label>
                                     </div>
                                     <div class="navbar-end">
-                                                <a class="btn bg-primary text-white">Blog</a>
+                                                <a class="btn bg-primary hidden md:flex text-white">Blog</a>
+                                                <div class=" flex md:hidden dropdown dropdown-end">
+                                                            <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" 
+                                                                                    class="h-5 w-5" 
+                                                                                    fill="none" 
+                                                                                    viewBox="0 0 24 24" 
+                                                                                    stroke="currentColor"> 
+                                                                                    <path stroke-linecap="round" 
+                                                                                                stroke-linejoin="round" 
+                                                                                                stroke-width="2" d="M4 6h16M4 12h16M4 18h7" 
+                                                                                    /> 
+                                                                        </svg>
+                                                            </div>
+                                                            <ul tabindex="0"
+                                                                        class="menu menu-sm gap-5 dropdown-content bg-base-100 rounded-box z-1 mt-[55px] w-52 py-10 shadow">
+                                                                        <li><a class="btn bg-primary text-white w-28 mx-auto">Home</a></li>
+                                                                        <li><a class="btn bg-primary text-white w-28 mx-auto">Blog</a></li>
+                                                            </ul>
+                                                </div>
                                     </div>
                         </nav>
                         <div class="join gap-3" id="category-container">
@@ -41,7 +78,8 @@
                                                 <div id="description-container"></div>
                                                 <div class="modal-action">
                                                             <form method="dialog">
-                                                                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-primary text-white">✕</button>
+                                                                        <button
+                                                                                    class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-primary text-white">✕</button>
                                                             </form>
                                                 </div>
                                     </div>
@@ -50,7 +88,8 @@
             <footer>
                         <div class="container mx-auto my-5">
                                     <p class="text-center">All right reserved &copy; 2025 by <br>
-                                                <a href="https://github.com/mdsaifurrahamn117" target="_blank" class="text-primary uppercase">
+                                                <a href="https://github.com/mdsaifurrahamn117" target="_blank"
+                                                            class="text-primary uppercase">
                                                             MD Saifur Rahman
                                                 </a>
                                     </p>

@@ -34,8 +34,8 @@ const show_categories = (categories) => {
 categories();
 
 // Get all the videos by default
-const videos = () => {
-            fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+const videos = (search = "") => {
+            fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${search}`)
                         .then(response => response.json())
                         .then(data => show_videos(data.videos))
                         .catch(error => console.log(error))
@@ -60,7 +60,7 @@ const get_description = (description) => {
 
 // show the description in the modal
 const show_description = (video) => {
-            console.log(video);
+            // console.log(video);
             const description_container = document.getElementById("description-container");
             description_container.innerHTML = `
                         <img src="${video.thumbnail}" alt="thumbnail" class="w-full h-52 object-cover rounded" />
@@ -165,4 +165,11 @@ const get_videos = (id) => {
                         .catch(error => console.log(error));
 }
 
-videos()
+// search videos
+const search_video = document.getElementById("search-input");
+search_video.addEventListener("keyup", (e) => {
+            videos(e.target.value);
+})
+
+videos();
+
