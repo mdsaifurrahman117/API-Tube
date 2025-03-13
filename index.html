@@ -4,6 +4,7 @@
 <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/2504/2504965.png" type="image/x-icon">
             <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
             <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
             <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -24,7 +25,7 @@
                                                 <a class="btn bg-primary text-white">Blog</a>
                                     </div>
                         </nav>
-                        <div class="join gap-5" id="category-container">
+                        <div class="join gap-3" id="category-container">
                                     <button class="btn join-item bg-primary text-black" id="all-btn"
                                                 onclick="get_videos_all()">
                                                 All
@@ -35,7 +36,7 @@
                         class="container my-10 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center">
             </main>
             <section>
-                        <dialog id="open_modal" class="modal modal-bottom sm:modal-middle ">
+                        <dialog id="open_modal" class="modal modal-middle ">
                                     <div class="modal-box">
                                                 <div id="description-container"></div>
                                                 <div class="modal-action">
@@ -46,6 +47,15 @@
                                     </div>
                         </dialog>
             </section>
+            <footer>
+                        <div class="container mx-auto my-5">
+                                    <p class="text-center">All right reserved &copy; 2025 by <br>
+                                                <a href="https://github.com/mdsaifurrahamn117" target="_blank" class="text-primary uppercase">
+                                                            MD Saifur Rahman
+                                                </a>
+                                    </p>
+                        </div>
+            </footer>
             <script src="script.js"></script>
 </body>
 

@@ -63,7 +63,7 @@ const show_description = (video) => {
             console.log(video);
             const description_container = document.getElementById("description-container");
             description_container.innerHTML = `
-                        <img src="${video.thumbnail}" alt="thumbnail" class="w-full h-64 object-cover rounded" />
+                        <img src="${video.thumbnail}" alt="thumbnail" class="w-full h-52 object-cover rounded" />
                         <h3 class="text-lg font-bold mt-2">${video.title}</h3>
                         <p class="py-2">${video.description}</p>
             `;
@@ -166,29 +166,3 @@ const get_videos = (id) => {
 }
 
 videos()
-
-
-
-
-/*
-
-{
-    "category_id": "1001",
-    "video_id": "aaab",
-    "thumbnail": "https://i.ibb.co/QPNzYVy/moonlight.jpg",
-    "title": "Midnight Serenade",
-    "authors": [
-        {
-            "profile_picture": "https://i.ibb.co/fDbPv7h/Noha.jpg",
-            "profile_name": "Noah Walker",
-            "verified": false
-        }
-    ],
-    "others": {
-        "views": "543K",
-        "posted_date": ""
-    },
-    "description": "'Midnight Serenade' by Noah Walker is a soulful journey into the depths of the night, capturing the mystique and allure of a moonlit evening. With 543K views, this song brings together tender melodies and evocative lyrics, making it a favorite among listeners seeking a contemplative yet uplifting experience. Immerse yourself in this musical masterpiece and feel the calm embrace of the night."
-}
-
-*/
